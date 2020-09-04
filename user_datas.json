@@ -1,0 +1,16 @@
+{
+    "mail": "hogehoge@gmail.com",
+    "pass": "hogeHOGEhogeHOge",
+    "wait_seconds": 60,
+    "urls": {
+        "BanG_Dream!_presents": "https://hibiki-radio.jp/description/bdp/detail",
+        "Poppin'_Radio": "https://hibiki-radio.jp/description/poppin-radio/detail",
+        "Radio_Shout": "https://hibiki-radio.jp/description/Roselia/detail",
+        "Monica_Radio": "https://hibiki-radio.jp/description/morfonica/detail",
+        "Radio_RIOT": "https://hibiki-radio.jp/description/ras/detail",
+        "Yuyake_Studio": "https://hibiki-radio.jp/description/Afterglow/detail"
+    },
+    "save_folders": [
+        "./"
+    ]
+}
