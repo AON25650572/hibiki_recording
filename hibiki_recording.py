@@ -9,6 +9,7 @@ import pydub
 
 def wait_clickable(wait_seconds,Xpath_selector,driver):
     WebDriverWait(driver,wait_seconds).until(EC.element_to_be_clickable((By.XPATH,Xpath_selector)))
+    #driver.find_element_by_xpath(Xpath_selector)
 
 def wait_located(wait_seconds,Xpath_selector,driver):
     WebDriverWait(driver,wait_seconds).until(EC.presence_of_all_elements_located)
@@ -89,7 +90,8 @@ with open('user_datas.json','r',encoding='utf8') as f:
 # 自前の環境ではドライバーのパス通しがうまくいかなかったので直下フォルダにドライバーを配置している
 driver = webdriver.Chrome()
 
-# 一度設定すると find_element 等の処理時に、要素が見つかるまで指定時間繰り返し探索するようになる
+# 一度設定すると find_element 等の処理時に、
+# 要素が見つかるまで指定時間繰り返し探索するようになります。
 driver.implicitly_wait(30) # 秒
 
 driver.get('https://hibiki-radio.jp/login')
@@ -130,11 +132,13 @@ for path in user_datas['save_folders']:
 # 本放送と楽屋裏のXPath
 nomal_button = '/html/body/div[2]/div/div/div[1]/div/div[1]'
 gakuyaura_button = '/html/body/div[2]/div/div/div[1]/div/div[2]'
+# 放送回取得のためのXPath
+kaisuu = '/html/body/div[2]/div/div/div[1]/div/div[1]/div/div[2]/div[2]'
 # 経過時間のXpath
 total = '/html/body/program-player-ctrl/div[2]/div/div/div[4]/div[3]/span'
 
 # 保存先に最新放送回がなければレコーディング
-save_path = user_datas['save_folders'][0]
+save_path = user_datas['save_folders'][0] + '/'
 print('＝＝＝　レコーディング　＝＝＝')
 for radio_name in new_programs.keys():
     if new_programs[radio_name] not in saved_files:
@@ -197,6 +201,7 @@ for radio_name in new_programs.keys():
         print()
         print('-----------------------------\n')
 
+print('＝＝＝　レコーディング終了　＝＝＝')
 # 一時ファイル削除
 if 'nomal.wav' in os.listdir():
     os.remove('nomal.wav')
